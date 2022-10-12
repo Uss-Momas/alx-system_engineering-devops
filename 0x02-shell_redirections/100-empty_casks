@@ -1,2 +1,2 @@
 #!/bin/bash
-fin . -empty | rev | cut -d '/' -f 1| rev
+fin . -empty  -printf %f'\n'
