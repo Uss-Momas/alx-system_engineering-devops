@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Bash script that displays content of the current dir in list format
 
-ls > list
-for el in `cat list`
+list=$(ls)
+for el in $list
 do
-  echo $el
+  echo $el | cut -d "-" -f 2
 done
