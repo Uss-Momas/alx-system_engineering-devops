@@ -15,17 +15,17 @@ then
 else
   for arg in "$@"
   do 
-    if [ $arg = "start" ]
+    if [ "$arg" = "start" ]
     then
       ./manage_my_process &
       echo "$!" > /var/run/my_process.pid
       echo "manage_my_process started"
-    elif [ $arg = "stop" ]
+    elif [ "$arg" = "stop" ]
     then
       echo "manage_my_process stopped"
       rm /var/run/my_process.pid
       pkill -SIGKILL -f ./manage_my_process 
-    elif [ $arg = "restart" ]
+    elif [ "$arg" = "restart" ]
     then
       echo "manage_my_process restarted"
       rm /var/run/my_process.pid
