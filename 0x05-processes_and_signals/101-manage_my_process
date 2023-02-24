@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# Bash script that manages the manage_my_process script
+
+number_args=0
+size="$#"
+while [ $number_args -lt $size ]
+do
+  number_args=$((number_args + 1))
+done
+
+if [ $number_args -eq 0 ] || [ $number_args -gt 3 ]
+then
+  echo "Usage: manage_my_process {start|stop|restart}"
+  exit
+else
+  for arg in "$@"
+  do 
+    if [ $arg = "start" ]
+    then
+      ./manage_my_process &
+      echo "$!" > /var/run/my_process.pid
+      echo "manage_my_process started"
+    elif [ $arg = "stop" ]
+    then
+      echo "manage_my_process stopped"
+      rm /var/run/my_process.pid
+      pkill -SIGKILL -f ./manage_my_process 
+    elif [ $arg = "restart" ]
+    then
+      echo "manage_my_process restarted"
+      rm /var/run/my_process.pid
+      pkill -SIGKILL -f ./manage_my_process
+      ./manage_my_process &
+      echo "$!" > /var/run/my_process.pid
+    else
+      echo "Usage: manage_my_process {start|stop|restart}"
+    fi 
+  done
+fi
