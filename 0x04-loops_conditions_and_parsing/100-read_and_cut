@@ -7,5 +7,6 @@ file="/etc/passwd"
 
 while IFS=: read -r c1 c2 c3 c4 c5 c6 c7;
 do
+  c2=$((c2 + ""));  c4=$((c4 + ""));   c5=$((c5 + ""));   c7=$((c7 + ""))
   echo "$c1:$c3:$c6"
 done < $file
