@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Displaying the data of the apache-access log from descendent form
+
+awk '{print $1, $9}' apache-access.log | sort -n | uniq -c | sort -rn
