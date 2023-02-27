@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Reading information from a file
+
+file="/etc/passwd"
+
+while read -r line; do 
+  echo "$line"
+done < $file
