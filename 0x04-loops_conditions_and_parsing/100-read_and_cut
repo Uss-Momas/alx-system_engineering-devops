@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 # Reading information from a file
+# c1 c2 .. c7 represent the columns of the file
+# c1 represents username c3 user ID c6 home directory
 
 file="/etc/passwd"
 
-while read -r line; do 
-  echo "$line"
+while IFS=: read -r c1 c2 c3 c4 c5 c6 c7;
+do
+  echo "$c1:$c3:$c6"
 done < $file
