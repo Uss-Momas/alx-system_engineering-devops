@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# script to give page back
+sudo service apache2 start
