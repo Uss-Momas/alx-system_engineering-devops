@@ -11,7 +11,13 @@ domain() {
   echo "The subdomain $subdomain is a $record_type record and points to $point_to"
 }
 
-domain "www.""$1"
-domain "lb-01.""$1"
-domain "web-01.""$1"
-domain "web-02.""$1"
+if [ "$#" -eq 1 ]
+then
+  domain "www.""$1"
+  domain "lb-01.""$1"
+  domain "web-01.""$1"
+  domain "web-02.""$1"
+elif [ "$#" -eq 2 ]
+then
+  domain "$2.""$1"
+fi
