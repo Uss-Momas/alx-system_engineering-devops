@@ -8,7 +8,7 @@ domain() {
   record_type=$(echo "$ANSWER" | awk '{print $4}')
   point_to=$(echo "$ANSWER" | awk '{print $5}')
 
-  echo "The subdomain is $subdomain is a $record_type record and points to $point_to"
+  echo "The subdomain $subdomain is a $record_type record and points to $point_to"
 }
 
 domain "www.""$1"
