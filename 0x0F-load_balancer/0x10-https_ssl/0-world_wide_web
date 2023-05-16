@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # bash scripts to display information about subdomains
 
-domain()
-{
+domain() {
   ANSWER=$(dig "$1" | grep -A1 'ANSWER SECTION:' | tail -n 1)
 
   subdomain=$(echo "$ANSWER" | awk '{print $1;}' FS=.)
