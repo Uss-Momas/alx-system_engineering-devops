@@ -1,20 +1,19 @@
 #!/usr/bin/env bash
 # Bash Script to install and configure HAProxy
 sudo ufw allow 1344
-sudo apt-get install -y --no-install-recommends software-properties-common
-sudo add-apt-repository --yes ppa:vbernat/haproxy-2.6
-sudo apt-get install -y haproxy=2.6.\*
+apt-get -y update
+apt-get install -y haproxy
 
-echo "
+printf %s "
 backend web-backend
-  balance roundrobin
-  option forwardfor
-  server 168289-web-01 34.202.159.196:80 check
-  server 168289-web-02 34.207.211.106:80 check
+        balance roundrobin
+        option forwardfor
+        server 168289-web-01 34.202.159.196:80 check
+        server 168289-web-02 34.207.211.106:80 check
 frontend proxynode
-  bind *:80
-  mode http
-  default_backend web-backend
-" >> sudo /etc/haproxy/haproxy.cfg
+        bind *:80
+        mode http
+        default_backend web-backend
+" >> /etc/haproxy/haproxy.cfg
 
 sudo service haproxy restart
