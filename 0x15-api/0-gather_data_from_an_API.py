@@ -6,6 +6,9 @@ import sys
 
 
 def get_user_todo(user_id):
+    """get the user information in json
+    """
+
     api_url = 'https://jsonplaceholder.typicode.com'
     employee_id = user_id
 
