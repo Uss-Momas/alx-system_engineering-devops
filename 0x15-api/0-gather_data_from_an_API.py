@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 """Gather data from an API"""
 
-if __name__ == '__main__':
-    import requests
-    import sys
+import requests
+import sys
 
+
+def get_user_todo(user_id):
     api_url = 'https://jsonplaceholder.typicode.com'
-    employee_id = int(sys.argv[1])
+    employee_id = user_id
 
     user_response = requests.get("{}/users/{}".format(api_url, employee_id))
     todos_response = requests.get("{}/todos".format(api_url))
@@ -28,3 +29,7 @@ if __name__ == '__main__':
     print("Employee {} is done with tasks ({}/{}):"
           .format(user_dict.get("name"), done_tasks, tot_number_tasks))
     print(list_completed[:-1])
+
+
+if __name__ == '__main__':
+    get_user_todo(int(sys.argv[1]))
