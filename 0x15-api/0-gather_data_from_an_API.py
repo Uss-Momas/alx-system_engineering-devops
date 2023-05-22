@@ -13,13 +13,14 @@ todos_list = todos_response.json()
 done_tasks = 0
 tot_number_tasks = 0
 list_completed = ""
+
 for item in todos_list:
-    if item['completed'] and item['userId'] == employee_id:
-        list_completed += '\t ' + item["title"] + '\n'
+    if item.get('completed') and item.get('userId') == employee_id:
+        list_completed += '\t ' + item.get("title") + '\n'
         done_tasks += 1
-    if item['userId'] == employee_id:
+    if item.get('userId') == employee_id:
         tot_number_tasks += 1
 
 print("Employee {} is done with tasks ({}/{}):"
-      .format(user_dict["name"], done_tasks, tot_number_tasks))
+      .format(user_dict.get("name"), done_tasks, tot_number_tasks))
 print(list_completed[:-1])
