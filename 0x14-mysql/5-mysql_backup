@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-# create a dump of all databases
-mysqldump -uroot -p"$1" --all-databases  > backup.sql
-day=$(date +%d)
-month=$(date +%m)
-year=$(date +%Y)
-fulldate="$day-$month-$year"
-tar -czvf "$fulldate"".tar.gz" backup.sql
