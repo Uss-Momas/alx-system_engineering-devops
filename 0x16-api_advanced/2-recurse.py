@@ -20,10 +20,11 @@ def recurse(subreddit, hot_list=[], after=None):
     headers = {"User-Agent": "MyAPI/1.1 by Uss"}
     resp = requests.get(URL, headers=headers, allow_redirects=False,
                         params={"after": after})
+    if resp.status_code != 200:
+        return None
+
     after = resp.json().get("data").get("after")
     all = hot_list
-    if resp.status_code >= 400:
-        return None
     if after:
         posts = resp.json().get("data").get("children")
         for post in posts:
